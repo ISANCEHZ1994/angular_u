@@ -4,17 +4,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // below is not an Angular feature but a TypeScript feature!
 // TypeScript needs to know where things are
-// import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
+import { ServerComponent } from './server/server.component';
+import { ServersComponent } from './servers/servers.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ServerComponent,
+    ServersComponent
   ],
   imports: [
     BrowserModule, 
-    // FormsModule // we then add the new Module
+    FormsModule, // we then add the new Module
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent] // we are referencing our AppComponent

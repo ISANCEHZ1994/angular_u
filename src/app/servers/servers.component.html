@@ -1,4 +1,58 @@
-<!-- we can use it as often as we want -->
+<label>Server Name</label>
+<!-- (input) is a normal DOM event -->
+<!-- we have set the input to fire the function every keystroke -->
+<!-- $event is a reserved variable name you can use in the template when using event binding -->
+<!-- only in the quotes surrounding  onCreateServer() -->
+<!-- (dollar sign) $event will be the data emitted with that event - gives us access to event data -->
+<!-- <input
+    type="text"
+    class="form-control"
+    (input)="onUpdateServerName($event)"
+> <p>{{ serverName }}</p> -->
+<input
+    type="text"
+    class="form-control"
+    [(ngModel)] ="serverName"
+>
+
+<!-- Square Brackets indicate to Angular that we want to dynamiclly bind some property -->
+<!-- with Square Brackets we are directly binding to this native disabled property -->
+<!-- by adding the explamation mark we made sure that this is only disable if this is false! -->
+<!-- as a result: after 2 seconds button doesnt not become disabled -->
+
+<!-- Angular allows us to do Event Binding when using Paraenthesis bars  - in this case we want a onclick event -->
+<button 
+class="btn btn-primary"
+[disabled] ="!allowNewServer"
+(click)="onCreateServer()"
+>
+Add Server</button>
+<!-- Both do the same below! -->
+<!-- <p>{{allowNewServer}}</p> -->
+<!-- <p [innerText]="allowNewServer"></p> -->
+
+<!-- <p>{{ serverCreationStatus }}</p> -->
+
+<!-- the star (*) is required because ngIf is a structural directive which means it changes the structure of the DOM -->
+
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+
+<br>
+<input
+    type="text"
+    class="form-control"
+    [(ngModel)] = userName
+>
+
+<p
+    [hidden] = "!userName"
+>So your username is: {{ userName }}, is that correct?</p>
+<button
+    class = "btn btn-primary"
+    [disabled] = "!userName"
+    (click) = "onUpdateUserName()"
+>Reset Username</button>
+
 <app-server></app-server>
 <app-server></app-server>
 

@@ -3,7 +3,21 @@
 <!-- within double curly boys you can write typescript expressions -->
 <!-- <p>{{'Server'}} with Id {{ serverId }} is {{ serverStatus }}</p> -->
 <!-- Showing the different ways to use the expressions -->
-<p>{{ 'Server' }} with Id {{ serverId }} is {{ getServerStatus() }}</p>
+
+<!-- ngStyle - the elements attributes will change; expects to get a JS object and we define key-value pairs of the style-->
+<!-- remember Property Binding means using the [] brackets - we want to bind some property on this directive -->
+<!-- and this property name happens to be ngStyle -->
+<!-- Property Binding is DIFFERENT from a Directive -->
+
+<!-- [ngStyle] = "{'background-color': getColor()}" => if you use the dash in between then use single quotation marks 
+to make it a valid JavaScript property or use the camelCase notation like BELOW -->
+
+<!-- ngClass allows us to dynamically add or remove CSS classes -->
+<!-- check the styles section inside of server.component.ts file - if serverStatus is online the text will be white-->
+<p 
+[ngStyle] = "{ backgroundColor: getColor() }"
+[ngClass] = "{ online: serverStatus === 'online' }"
+>{{ 'Server' }} with Id {{ serverId }} is {{ getServerStatus() }}</p>
 <!-- 
     will show up as:
         Server with Id 10 is offline

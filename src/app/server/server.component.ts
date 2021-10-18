@@ -11,15 +11,29 @@ import { Component } from '@angular/core';
     // below should point to this component's HTML file so that something can be displayed
     templateUrl: './server.component.html',   
     
+    styles: [`
+        .online{
+            color: white;
+        }
+    `]
 })
 export class ServerComponent {
 
     // hardcoding for now
     serverId: number = 10;
+    // below we want to change the background color depending on service status 
     serverStatus: string = 'offline';
+
+    constructor(){
+        this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+    };
 
     getServerStatus(){
         return this.serverStatus;
+    };
+
+    getColor(){
+        return this.serverStatus === 'online' ? 'green' : 'red';
     };
 
 };

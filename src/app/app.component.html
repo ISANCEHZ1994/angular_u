@@ -18,10 +18,23 @@
       <app-servers></app-servers> <!-- will give us TWO of the SERVER component => see servers.ts -->
       <!-- <div app-servers> </div> -->  <!-- this is how to have the selector as an attribute! -->
      <!-- <div class="app-servers"> </div> -->
-     <app-success-alert></app-success-alert>
-     <app-warning-alert></app-warning-alert>
+     <!-- <app-success-alert></app-success-alert> -->
+     <!-- <app-warning-alert></app-warning-alert> -->
+      <button 
+      (click)="onShow()"
+      >Display Details</button>
+      <p 
+      *ngIf="showText"
+      > here is some text that appears when you push a button!</p>
+      <p 
+      *ngFor="let click of clicks"
+      [ngStyle] = "{ backgroundColor: click >= 5 ? 'blue' : 'transparent' }"
+      [ngClass] = "{ online: click >= 5 }"
+      > {{ click }} </p>
+      <!-- for the ngStyle we are saying that after a certian INDIVIDUAL amount start changing background -->
+      <!-- after 4 they will have a blue background -->
     </div>
-  </div>
+  </div> 
 </div>
 
 
